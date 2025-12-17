@@ -77,8 +77,8 @@ function App() {
             onSecCta={() => setIsWhatsAppModalOpen(true)}
         />
         <ServicesSection onSelectService={handleServiceSelect} />
-        <UseCasesSection />
-        <HowItWorks />
+        <UseCasesSection onCta={handleMainCta} />
+        <HowItWorks onCta={handleMainCta} />
         <SuccessStorySection onCta={handleMainCta} />
         <WhyUs />
         <PartnersSection />

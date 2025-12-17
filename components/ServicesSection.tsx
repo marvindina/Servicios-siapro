@@ -8,9 +8,10 @@ interface ServicesSectionProps {
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectService }) => {
   // Map images for visual variety
+  // Updated both images to match the specific high-tech requests
   const SERVICE_IMAGES = [
-    "https://images.unsplash.com/photo-1586762524444-80e0fe900019?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80&w=600"
+    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800", // Digitalización y Automatización (Green tech)
+    "https://spanishcompaniesfenin.com/wp-content/uploads/2019/10/IMG_Firma_Biometrica_Validated-ID.png" // Firma Electrónica Avanzada (Validated ID specific)
   ];
 
   return (
@@ -74,7 +75,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                         onClick={() => onSelectService(service.title)}
                         className="w-full bg-brand-dark text-white py-5 rounded-2xl font-bold hover:bg-brand-green transition-all flex items-center justify-center gap-3 shadow-xl shadow-brand-dark/5"
                     >
-                        {service.ctaText}
+                        Cotizar ahora
                         <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
                     </button>
                 </div>

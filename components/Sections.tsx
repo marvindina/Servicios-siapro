@@ -78,7 +78,7 @@ export const Hero: React.FC<HeroProps> = ({ onMainCta, onSecCta }) => {
   );
 };
 
-export const UseCasesSection: React.FC = () => {
+export const UseCasesSection: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   return (
     <section id="casos" className="py-24 bg-gray-50">
       <div className="container mx-auto px-6 lg:px-16">
@@ -91,7 +91,7 @@ export const UseCasesSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {USE_CASES.map((useCase, index) => (
             <div key={index} className="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 flex flex-col group hover:-translate-y-2">
               <div className="bg-brand-light p-4 rounded-2xl mb-8 text-brand-green group-hover:scale-110 transition-transform self-start">
@@ -101,6 +101,15 @@ export const UseCasesSection: React.FC = () => {
               <p className="text-gray-600 leading-relaxed text-sm md:text-base">{useCase.description}</p>
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-center">
+            <button 
+                onClick={onCta}
+                className="bg-brand-green hover:bg-brand-hover text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all flex items-center gap-3 shadow-xl shadow-brand-green/20"
+            >
+                Cotizar ahora <ArrowRight size={20} />
+            </button>
         </div>
       </div>
     </section>
@@ -227,7 +236,7 @@ export const WhyUs: React.FC = () => {
     );
   };
 
-export const HowItWorks: React.FC = () => {
+export const HowItWorks: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   return (
     <section id="proceso" className="py-24 bg-white">
       <div className="container mx-auto px-6 lg:px-16">
@@ -238,7 +247,7 @@ export const HowItWorks: React.FC = () => {
           <p className="text-gray-500 text-xl">Un camino estructurado hacia la eficiencia digital.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {STEPS.map((step, index) => (
             <div key={index} className="relative p-12 rounded-[3rem] border border-gray-100 bg-gray-50/50 hover:bg-white hover:shadow-2xl transition-all duration-500 group border-b-4 hover:border-b-brand-green">
               <div className="text-7xl font-black text-gray-100 absolute top-8 right-10 select-none group-hover:text-brand-green/10 transition-colors">
@@ -248,6 +257,15 @@ export const HowItWorks: React.FC = () => {
               <p className="text-gray-500 text-base relative z-10 leading-relaxed">{step.description}</p>
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-center">
+            <button 
+                onClick={onCta}
+                className="bg-brand-green hover:bg-brand-hover text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all flex items-center gap-3 shadow-xl shadow-brand-green/20"
+            >
+                Cotizar ahora <ArrowRight size={20} />
+            </button>
         </div>
       </div>
     </section>
