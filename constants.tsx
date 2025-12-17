@@ -25,9 +25,9 @@ export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 export const SIAPRO_LOGO_URL = "https://impresiones.siapromx.com/assets/logo.png";
 export const SIAPRO_LOGO_WHITE_URL = "https://impresiones.siapromx.com/assets/logo.png";
 
-// Partner Logo URLs
-export const LOGO_DOCUWARE = "https://www.docuware.com/sites/default/files/docuware_logo_pos_rgb_0.png";
-export const LOGO_VALIDATEDID = "https://www.validatedid.com/hubfs/logos/ValidatedID_Logo_RGB.png";
+// Partner Logo URLs - UPDATED
+export const LOGO_DOCUWARE = "https://www.gestiondocumental.cloud/img/logoDocuware.png";
+export const LOGO_VALIDATEDID = "https://cdn.prod.website-files.com/5ec68f0bd0db4b52be8cf1d5/658d51d461f9907c2d94bcf6_Validated%20ID%20logo.webp";
 export const LOGO_MONDAY = "https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/monday-logo-x2.png";
 
 // Webhooks
@@ -100,7 +100,7 @@ export const SUCCESS_STORY = {
       icon: <Lock className="w-6 h-6 text-brand-green" />
     }
   ],
-  imageUrl: "https://blob.udgtv.com/images/uploads/2021/07/siapa-medios-focus-0-0-608-342.jpg"
+  imageUrl: "https://static.tiempo.com.mx/uploads/imagen/imagen/681572/principal_screenshot-2024-12-27-134412.jpg"
 };
 
 export const USE_CASES: UseCase[] = [
