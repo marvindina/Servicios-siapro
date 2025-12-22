@@ -3,14 +3,19 @@ import { CALENDLY_URL } from '../constants';
 
 export const ThankYou: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   useEffect(() => {
-    // Dynamically load Calendly script
+    // Dynamically load Calendly script to ensure the widget initializes correctly in SPA
     const script = document.createElement('script');
     script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.type = "text/javascript";
     script.async = true;
     document.body.appendChild(script);
 
     return () => {
-        document.body.removeChild(script);
+        // Clean up script on unmount
+        const existingScript = document.querySelector('script[src*="calendly"]');
+        if (existingScript) {
+            document.body.removeChild(existingScript);
+        }
     }
   }, []);
 
@@ -26,7 +31,13 @@ export const ThankYou: React.FC<{ onBack: () => void }> = ({ onBack }) => {
         
         {/* Calendly Inline Widget */}
         <div className="bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100">
-            <div className="calendly-inline-widget" data-url={CALENDLY_URL} style={{ minWidth: '320px', height: '700px' }}></div>
+            {/* Principio del widget integrado de Calendly */}
+            <div 
+                className="calendly-inline-widget" 
+                data-url={CALENDLY_URL} 
+                style={{ minWidth: '320px', height: '700px' }}
+            ></div>
+            {/* Final del widget integrado de Calendly */}
         </div>
         
         <div className="mt-12">

@@ -10,19 +10,29 @@ interface WhatsAppModalProps {
   onSuccess: () => void;
 }
 
+const COUNTRY_CODES = [
+  { code: '+52', label: 'MX (+52)' },
+  { code: '+1', label: 'US/CA (+1)' },
+  { code: '+34', label: 'ES (+34)' },
+  { code: '+54', label: 'AR (+54)' },
+  { code: '+57', label: 'CO (+57)' },
+  { code: '+56', label: 'CL (+56)' },
+  { code: '+51', label: 'PE (+51)' },
+];
+
 export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose, utms, onSuccess }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    countryCode: '+52'
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    // For phone, only allow numbers and max 10 chars
     if (name === 'phone') {
         const numericValue = value.replace(/[^0-9]/g, '').slice(0, 10);
         setFormData(prev => ({ ...prev, [name]: numericValue }));
@@ -39,13 +49,18 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose, u
     }
 
     setIsSubmitting(true);
+    const fullPhone = `${formData.countryCode}${formData.phone}`;
 
     const payload = {
-        ...formData,
-        full_phone: `+52${formData.phone}`,
+        name: formData.name,
+        email: formData.email,
+        phone: fullPhone,
+        whatsapp_number: fullPhone,
+        country_code: formData.countryCode,
         ...utms,
         timestamp: new Date().toISOString(),
-        source: 'WhatsApp Modal Popup'
+        source: 'WhatsApp Modal Popup',
+        url: window.location.href
     };
 
     try {
@@ -114,22 +129,29 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose, u
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">WhatsApp (10 dígitos)</label>
-            <div className="flex">
-              <span className="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-gray-300 bg-gray-50 text-gray-500 font-bold">
-                +52
-              </span>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">WhatsApp</label>
+            <div className="flex gap-1">
+              <select
+                name="countryCode"
+                value={formData.countryCode}
+                onChange={handleChange}
+                className="w-1/3 px-2 py-2 border rounded-l-lg bg-gray-50 text-xs font-bold focus:ring-2 focus:ring-brand-green outline-none"
+              >
+                {COUNTRY_CODES.map(c => (
+                  <option key={c.code} value={c.code}>{c.label}</option>
+                ))}
+              </select>
               <input 
                 type="tel" 
                 name="phone" 
                 required 
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-r-lg focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none" 
-                placeholder="5512345678" 
+                className="flex-1 px-4 py-2 border rounded-r-lg focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none" 
+                placeholder="10 dígitos" 
               />
             </div>
-            <p className="text-xs text-gray-500 mt-1">Solo números, sin espacios.</p>
+            <p className="text-xs text-gray-500 mt-1">Ingresa tu número a 10 dígitos.</p>
           </div>
           
           <button 
