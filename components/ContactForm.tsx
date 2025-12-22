@@ -9,12 +9,23 @@ interface ContactFormProps {
   onSuccess: () => void;
 }
 
+const COUNTRY_CODES = [
+  { code: '+52', label: 'MX (+52)' },
+  { code: '+1', label: 'US/CA (+1)' },
+  { code: '+34', label: 'ES (+34)' },
+  { code: '+54', label: 'AR (+54)' },
+  { code: '+57', label: 'CO (+57)' },
+  { code: '+56', label: 'CL (+56)' },
+  { code: '+51', label: 'PE (+51)' },
+];
+
 export const ContactForm: React.FC<ContactFormProps> = ({ selectedService, utms, onSuccess }) => {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
     email: '',
     phone: '',
+    countryCode: '+52',
     serviceInterest: '',
     processes: [] as string[],
     timeline: 'inmediato'
@@ -32,7 +43,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({ selectedService, utms,
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    if (name === 'phone') {
+        const numericValue = value.replace(/[^0-9]/g, '').slice(0, 10);
+        setFormData(prev => ({ ...prev, [name]: numericValue }));
+    } else {
+        setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleProcessChange = (process: string) => {
@@ -50,12 +66,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({ selectedService, utms,
     e.preventDefault();
     setIsSubmitting(true);
 
+    const fullPhone = `${formData.countryCode}${formData.phone}`;
+
     const payload = {
         userData: {
             name: formData.name,
             company: formData.company,
             email: formData.email,
-            phone: formData.phone
+            phone: fullPhone,
+            whatsapp_number: fullPhone
         },
         projectDetails: {
             serviceInterest: formData.serviceInterest,
@@ -143,17 +162,29 @@ export const ContactForm: React.FC<ContactFormProps> = ({ selectedService, utms,
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="phone" className="block text-sm font-bold text-brand-dark">Teléfono</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all bg-gray-50"
-                  placeholder="55 1234 5678"
-                />
+                <label htmlFor="phone" className="block text-sm font-bold text-brand-dark">WhatsApp</label>
+                <div className="flex gap-2">
+                  <select
+                    name="countryCode"
+                    value={formData.countryCode}
+                    onChange={handleChange}
+                    className="w-1/3 px-3 py-3 rounded-xl border border-gray-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all bg-gray-50 text-sm font-semibold"
+                  >
+                    {COUNTRY_CODES.map(c => (
+                      <option key={c.code} value={c.code}>{c.label}</option>
+                    ))}
+                  </select>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all bg-gray-50"
+                    placeholder="10 dígitos"
+                  />
+                </div>
               </div>
             </div>
 
