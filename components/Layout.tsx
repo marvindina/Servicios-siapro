@@ -1,6 +1,15 @@
 import React from 'react';
 import { Menu, Phone, MessageCircle, MapPin, Facebook, Linkedin, Instagram } from 'lucide-react';
-import { SIAPRO_LOGO_URL, SIAPRO_LOGO_WHITE_URL, LOGO_DOCUWARE, LOGO_VALIDATEDID, LOGO_MONDAY } from '../constants';
+import { 
+  SIAPRO_LOGO_URL, 
+  SIAPRO_LOGO_WHITE_URL, 
+  LOGO_DOCUWARE, 
+  LOGO_VALIDATEDID, 
+  COMPANY_PHONE,
+  FACEBOOK_LINK,
+  INSTAGRAM_LINK,
+  LINKEDIN_LINK
+} from '../constants';
 
 interface LayoutProps {
   onOpenWhatsApp: () => void;
@@ -41,7 +50,7 @@ export const Header: React.FC<LayoutProps> = ({ onOpenWhatsApp, onNavigate }) =>
               className="bg-brand-green text-white px-8 py-3.5 rounded-xl font-bold hover:bg-brand-hover transition-all flex items-center gap-3 whitespace-nowrap shadow-lg shadow-brand-green/10 transform hover:-translate-y-1"
             >
               <MessageCircle className="w-5 h-5" />
-              Cotizar ahora
+              Hablar por WhatsApp
             </button>
           </div>
 
@@ -70,7 +79,7 @@ export const Header: React.FC<LayoutProps> = ({ onOpenWhatsApp, onNavigate }) =>
                     onClick={onOpenWhatsApp}
                     className="w-full bg-brand-green text-white p-5 rounded-2xl font-bold text-lg shadow-xl shadow-brand-green/20"
                 >
-                    Contactar Consultor
+                    Hablar por WhatsApp
                 </button>
             </div>
           </div>
@@ -93,12 +102,12 @@ export const Footer: React.FC<{ onOpenWhatsApp: () => void }> = ({ onOpenWhatsAp
               className="h-12 w-auto object-contain brightness-0 invert" 
             />
             <p className="text-gray-400 text-xl leading-relaxed max-w-sm">
-              Transformación digital estratégica para empresas que buscan control absoluto y escalabilidad operativa.
+              SIAPRO y Dinametra: Transformación digital estratégica para empresas que buscan control absoluto y escalabilidad operativa.
             </p>
             <div className="flex space-x-8">
-              <a href="#" className="text-gray-600 hover:text-brand-green transition-all transform hover:scale-125"><Facebook size={28} /></a>
-              <a href="#" className="text-gray-600 hover:text-brand-green transition-all transform hover:scale-125"><Instagram size={28} /></a>
-              <a href="#" className="text-gray-600 hover:text-brand-green transition-all transform hover:scale-125"><Linkedin size={28} /></a>
+              <a href={FACEBOOK_LINK} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-brand-green transition-all transform hover:scale-125"><Facebook size={28} /></a>
+              <a href={INSTAGRAM_LINK} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-brand-green transition-all transform hover:scale-125"><Instagram size={28} /></a>
+              <a href={LINKEDIN_LINK} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-brand-green transition-all transform hover:scale-125"><Linkedin size={28} /></a>
             </div>
           </div>
 
@@ -111,7 +120,7 @@ export const Footer: React.FC<{ onOpenWhatsApp: () => void }> = ({ onOpenWhatsAp
               </li>
               <li className="flex items-center gap-4 text-gray-400">
                 <Phone size={24} className="text-brand-green" />
-                <span className="text-lg font-medium">55 1234 5678</span>
+                <span className="text-lg font-medium">{COMPANY_PHONE}</span>
               </li>
               <li className="flex items-center gap-4 text-gray-400">
                 <MessageCircle size={24} className="text-brand-green" />
@@ -125,20 +134,21 @@ export const Footer: React.FC<{ onOpenWhatsApp: () => void }> = ({ onOpenWhatsAp
             <div className="flex flex-wrap gap-10 items-center">
                 <img src={LOGO_DOCUWARE} alt="DocuWare Partner" className="h-10 w-auto brightness-0 invert opacity-50 hover:opacity-100 transition-all cursor-pointer" />
                 <img src={LOGO_VALIDATEDID} alt="Validated ID Partner" className="h-12 w-auto brightness-0 invert opacity-50 hover:opacity-100 transition-all cursor-pointer" />
+                <div className="text-xs font-black text-white opacity-40 uppercase tracking-widest border border-white/20 px-3 py-1 rounded">RICOH AUTHORIZED</div>
             </div>
             <div className="pt-8">
                 <button 
                     onClick={onOpenWhatsApp}
                     className="w-full bg-brand-green text-white py-5 rounded-2xl font-black text-xl hover:bg-brand-hover transition-all shadow-2xl shadow-brand-green/10"
                 >
-                    Diagnóstico Gratuito
+                    Diagnóstico por WhatsApp
                 </button>
             </div>
           </div>
         </div>
         
         <div className="border-t border-white/5 mt-24 pt-12 flex flex-col md:flex-row justify-between items-center gap-10">
-          <p className="text-gray-600 font-medium tracking-wide">&copy; {new Date().getFullYear()} SIAPRO. Consultoría en Procesos.</p>
+          <p className="text-gray-600 font-medium tracking-wide">&copy; {new Date().getFullYear()} SIAPRO (Dinametra). Consultoría en Procesos.</p>
           <div className="flex gap-10">
                <a href="#" className="text-gray-600 hover:text-white text-xs font-black uppercase tracking-[0.2em] transition-colors">Privacidad</a>
                <a href="#" className="text-gray-600 hover:text-white text-xs font-black uppercase tracking-[0.2em] transition-colors">Términos</a>
@@ -159,7 +169,7 @@ export const StickyCTA: React.FC<{ onOpenWhatsApp: () => void }> = ({ onOpenWhat
           <div className="bg-white/20 p-2 rounded-xl">
             <MessageCircle size={32} fill="white" className="text-transparent" />
           </div>
-          <span className="pr-3 hidden lg:block text-lg">¿Hablar con un experto?</span>
+          <span className="pr-3 hidden lg:block text-lg">Hablar por WhatsApp</span>
         </button>
     </div>
   );

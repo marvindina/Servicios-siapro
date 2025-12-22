@@ -15,18 +15,24 @@ export const ThankYou: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-16 px-4">
       <div className="w-full max-w-4xl text-center">
-        <h1 className="text-3xl font-bold text-brand-dark mb-4">¡Gracias por tu solicitud!</h1>
-        <p className="text-lg text-gray-600 mb-8">Hemos recibido tus datos correctamente. Si deseas agilizar el proceso, agenda una llamada de 30 minutos con un experto ahora mismo.</p>
+        <div className="mb-8">
+            <h1 className="text-4xl font-black text-brand-dark mb-6">¡Gracias por registrarte!</h1>
+            <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
+              Si deseas acelerar el proceso de tu cotización, agenda libremente abajo una sesión con uno de nuestros expertos en el mejor horario que te acomode.
+            </p>
+        </div>
         
         {/* Calendly Inline Widget */}
-        <div className="calendly-inline-widget" data-url={CALENDLY_URL} style={{ minWidth: '320px', height: '700px' }}></div>
+        <div className="bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100">
+            <div className="calendly-inline-widget" data-url={CALENDLY_URL} style={{ minWidth: '320px', height: '700px' }}></div>
+        </div>
         
-        <div className="mt-8">
+        <div className="mt-12">
             <button 
                 onClick={onBack}
-                className="text-brand-green font-semibold hover:underline"
+                className="text-brand-green font-bold text-lg hover:underline underline-offset-8 flex items-center justify-center gap-2 mx-auto transition-all"
             >
                 Volver al inicio
             </button>

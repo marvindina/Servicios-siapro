@@ -9,7 +9,7 @@ import { WhatsAppRedirect } from './components/WhatsAppRedirect';
 import { UTMParams } from './types';
 
 function App() {
-  const [view, setView] = useState<'landing' | 'thank-you' | 'wa-redirect'>('landing');
+  const [view, setView] = useState<'landing' | 'thank-you' | 'wa-thank-you'>('landing');
   const [selectedService, setSelectedService] = useState<string>('');
   const [isWhatsAppModalOpen, setIsWhatsAppModalOpen] = useState(false);
   const [utms, setUtms] = useState<UTMParams>({
@@ -17,10 +17,13 @@ function App() {
     utm_medium: '',
     utm_campaign: '',
     utm_term: '',
-    utm_content: ''
+    utm_content: '',
+    utm_id: '',
+    utm_adset: '',
+    utm_placement: ''
   });
 
-  // 1. Capture UTMs on mount
+  // 1. Capture UTMs and marketing params on mount
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setUtms({
@@ -28,7 +31,10 @@ function App() {
         utm_medium: params.get('utm_medium') || '',
         utm_campaign: params.get('utm_campaign') || '',
         utm_term: params.get('utm_term') || '',
-        utm_content: params.get('utm_content') || ''
+        utm_content: params.get('utm_content') || '',
+        utm_id: params.get('utm_id') || '',
+        utm_adset: params.get('utm_adset') || params.get('adset') || '',
+        utm_placement: params.get('utm_placement') || params.get('placement') || ''
     });
   }, []);
 
@@ -56,7 +62,7 @@ function App() {
   };
 
   // 3. Render Views
-  if (view === 'wa-redirect') {
+  if (view === 'wa-thank-you') {
       return <WhatsAppRedirect />;
   }
 
@@ -96,7 +102,7 @@ function App() {
         isOpen={isWhatsAppModalOpen} 
         onClose={() => setIsWhatsAppModalOpen(false)}
         utms={utms}
-        onSuccess={() => setView('wa-redirect')}
+        onSuccess={() => setView('wa-thank-you')}
       />
     </div>
   );

@@ -33,4 +33,7 @@ export interface UTMParams {
   utm_campaign: string;
   utm_term: string;
   utm_content: string;
+  utm_id: string;
+  utm_adset: string;
+  utm_placement: string;
 }

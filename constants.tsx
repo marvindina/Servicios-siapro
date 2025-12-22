@@ -17,22 +17,27 @@ import {
   Lock
 } from 'lucide-react';
 
-export const COMPANY_PHONE = "55 1234 5678";
-export const WHATSAPP_NUMBER = "5215512345678";
+export const COMPANY_PHONE = "+52 656 130 5101";
+export const WHATSAPP_NUMBER = "526561305101";
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+// Social Media Links
+export const FACEBOOK_LINK = "https://www.facebook.com/profile.php?id=61575853497490";
+export const INSTAGRAM_LINK = "https://www.instagram.com/siapro.consultoria/";
+export const LINKEDIN_LINK = "https://www.linkedin.com/company/siapro-mx/";
 
 // Main Logo URLs
 export const SIAPRO_LOGO_URL = "https://impresiones.siapromx.com/assets/logo.png";
 export const SIAPRO_LOGO_WHITE_URL = "https://impresiones.siapromx.com/assets/logo.png";
 
-// Partner Logo URLs - UPDATED
+// Partner Logo URLs
 export const LOGO_DOCUWARE = "https://www.gestiondocumental.cloud/img/logoDocuware.png";
 export const LOGO_VALIDATEDID = "https://cdn.prod.website-files.com/5ec68f0bd0db4b52be8cf1d5/658d51d461f9907c2d94bcf6_Validated%20ID%20logo.webp";
 export const LOGO_MONDAY = "https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/monday-logo-x2.png";
 
 // Webhooks
-export const WEBHOOK_MAIN_FORM = "https://hooks.zapier.com/hooks/catch/23995305/ufmcyhg/";
-export const WEBHOOK_WHATSAPP_FORM = "https://hooks.zapier.com/hooks/catch/23995305/ufmchy7/";
+export const WEBHOOK_MAIN_FORM = "https://hooks.zapier.com/hooks/catch/23995305/ualb77y/";
+export const WEBHOOK_WHATSAPP_FORM = "https://hooks.zapier.com/hooks/catch/23995305/ual3tc1/";
 
 // Calendly
 export const CALENDLY_URL = "https://calendly.com/siapromx/30min";
@@ -50,7 +55,7 @@ export const SERVICES: ServiceItem[] = [
       'Capacitación incluida'
     ],
     partners: ['DocuWare', 'Monday.com'],
-    ctaText: 'Más sobre automatización',
+    ctaText: 'Cotizar ahora',
     icon: <Cpu className="w-10 h-10 text-brand-green" />
   },
   {
@@ -65,13 +70,13 @@ export const SERVICES: ServiceItem[] = [
       'Plataforma incluida'
     ],
     partners: ['Validated ID'],
-    ctaText: 'Activar firma electrónica',
+    ctaText: 'Cotizar ahora',
     icon: <PenTool className="w-10 h-10 text-brand-green" />
   }
 ];
 
 export const SUCCESS_STORY = {
-  title: "Compras 100% digitales en JMAS (Cd. Juárez)",
+  title: "Compras 100% digitales en la Junta Municipal de Agua y Saneamiento de Cd. Juárez",
   challenge: "Un proceso de compras en papel podía tardar más de 4 semanas en avanzar y hasta 8 días solo en conseguir firmas.",
   solution: "Implementamos un flujo de compras digital con DocuWare Cloud, automatizando el registro de requerimientos, la creación de expedientes, el control de cotizaciones, notificaciones, aprobaciones y firma digital con validez legal (integración con VidSigner).",
   results: [

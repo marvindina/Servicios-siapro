@@ -51,11 +51,26 @@ export const ContactForm: React.FC<ContactFormProps> = ({ selectedService, utms,
     setIsSubmitting(true);
 
     const payload = {
-        ...formData,
-        processes: formData.processes.join(', '), // Convert array to string for Zapier
-        ...utms,
-        timestamp: new Date().toISOString(),
-        source: 'Landing Page Services Form'
+        userData: {
+            name: formData.name,
+            company: formData.company,
+            email: formData.email,
+            phone: formData.phone
+        },
+        projectDetails: {
+            serviceInterest: formData.serviceInterest,
+            processes: formData.processes,
+            timeline: formData.timeline
+        },
+        marketingData: {
+            ...utms
+        },
+        meta: {
+            timestamp: new Date().toISOString(),
+            url: window.location.href,
+            userAgent: navigator.userAgent,
+            source: 'Main Contact Form'
+        }
     };
 
     try {

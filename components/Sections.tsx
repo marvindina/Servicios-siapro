@@ -46,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ onMainCta, onSecCta }) => {
                         onClick={onSecCta}
                         className="px-8 py-4 bg-white text-brand-dark border-2 border-gray-100 rounded-xl font-bold text-lg hover:border-brand-green hover:text-brand-green transition-all"
                     >
-                        Hablar con un asesor
+                        Hablar por WhatsApp
                     </button>
                 </div>
             </div>
@@ -174,7 +174,7 @@ export const SuccessStorySection: React.FC<{ onCta: () => void }> = ({ onCta }) 
                     <div className="mt-auto relative min-h-[350px] w-full overflow-hidden">
                         <img 
                             src={SUCCESS_STORY.imageUrl} 
-                            alt="Caso de éxito JMAS Juárez" 
+                            alt={`Caso de éxito ${SUCCESS_STORY.title}`} 
                             className="absolute inset-0 w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-1000" 
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
